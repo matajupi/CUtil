@@ -26,6 +26,11 @@ SharedPtr move_sp(SharedPtr *sp)
     return new_sp;
 }
 
+void *borrow_sp(SharedPtr sp)
+{
+    return sp.is_available ? sp.object : NULL;
+}
+
 void destroy_sp(SharedPtr *sp)
 {
     if (!sp->is_available)
@@ -58,6 +63,11 @@ UniquePtr move_up(UniquePtr *up)
     up->object = NULL;
 
     return new_up;
+}
+
+void *borrow_up(UniquePtr up)
+{
+    return up.is_available ? up.object : NULL;
 }
 
 void destroy_up(UniquePtr *up)

@@ -28,7 +28,6 @@ SharedPtr create_sp(void *obj);
 /*
     SharedPtrをコピーする.
     SharedPtrをコピーするときは代入演算子ではなく必ずこの関数を用いる.
-    借用させるときは代入演算子を用いる.
 */
 SharedPtr copy_sp(SharedPtr sp);
 
@@ -39,6 +38,12 @@ SharedPtr copy_sp(SharedPtr sp);
     ムーブ元のSharedPtrはis_availableがfalseとなり、Objectへの参照動作は未定義となる.
 */
 SharedPtr move_sp(SharedPtr *sp);
+
+/*
+    SharedPtrの指すオブジェクトを借用（一時的に生のポインタとして貸し出す）する.
+    is_availableがfalseのときはNULLを返す.
+*/
+void *borrow_sp(SharedPtr sp);
 
 /*
     参照先のSharedPtrを破棄する.
@@ -77,6 +82,12 @@ UniquePtr create_up(void *obj);
     そのため、この関数を呼び出したあとのムーブ元のUniquePtrからのObjectへの参照動作は未定義.
 */
 UniquePtr move_up(UniquePtr *up);
+
+/*
+    UniquePtrの指すオブジェクトを借用する.
+    is_availableがfalseのときはNULLを返す.
+*/
+void *borrow_up(UniquePtr up);
 
 /*
     UniquePtrを破棄する.
