@@ -1,5 +1,5 @@
-#ifndef CUTIL_H
-#define CUTIL_H
+#ifndef CCOLLECTION_H
+#define CCOLLECTION_H
 
 // list
 // linked-list
@@ -17,10 +17,4 @@
 
 // iterator
 
-// sort
-// select
-// where
-
-// shared ptr, unique ptr
-
-#endif // CUTIL_H
+#endif // CCOLLECTION_H
